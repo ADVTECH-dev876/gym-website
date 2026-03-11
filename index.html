@@ -1,0 +1,510 @@
+This is a complete HTML document for a luxury gym brand called "ROYAL COMBO." It uses your specified color palette to create a sophisticated, premium feel with elegant card layouts, trainer profiles, class schedules, and a contact form.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROYAL COMBO | atelier of strength · rich palette</title>
+  <!-- Bootstrap 5 + icons + refined font -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CUSTOM PALETTE: cfdbd5, e8eddf, f5cb5c, 242423, 333533 ===== */
+    :root {
+      --platinum: #cfdbd5;   /* light, airy background */
+      --cream: #e8eddf;       /* soft off-white */
+      --gold: #f5cb5c;        /* warm accent – richness */
+      --jet: #242423;          /* near black – depth */
+      --charcoal: #333533;     /* dark gray – elegance */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--jet);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* text & bg utilities */
+    .bg-platinum { background-color: var(--platinum) !important; }
+    .bg-cream { background-color: var(--cream) !important; }
+    .bg-gold { background-color: var(--gold) !important; }
+    .bg-jet { background-color: var(--jet) !important; }
+    .bg-charcoal { background-color: var(--charcoal) !important; }
+
+    .text-platinum { color: var(--platinum) !important; }
+    .text-cream { color: var(--cream) !important; }
+    .text-gold { color: var(--gold) !important; }
+    .text-jet { color: var(--jet) !important; }
+    .text-charcoal { color: var(--charcoal) !important; }
+
+    .border-gold { border-color: var(--gold) !important; }
+    .border-jet { border-color: var(--jet) !important; }
+
+    /* navbar – rich translucent */
+    .navbar {
+      background-color: rgba(36, 36, 35, 0.98) !important; /* jet with opacity */
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      padding: 1rem 0;
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.9rem;
+      letter-spacing: -0.5px;
+      color: var(--gold) !important;
+    }
+    .navbar-brand span {
+      color: var(--cream);
+    }
+    .nav-link {
+      font-weight: 600;
+      color: var(--cream) !important;
+      margin: 0 0.9rem;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--gold) !important;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.25s;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* buttons – gold & jet */
+    .btn-gold {
+      background-color: var(--gold);
+      color: var(--jet);
+      font-weight: 700;
+      border: none;
+      padding: 0.75rem 2.2rem;
+      border-radius: 40px;
+      transition: all 0.3s;
+      box-shadow: 0 8px 18px rgba(245, 203, 92, 0.15);
+    }
+    .btn-gold:hover {
+      background-color: #e3b84c;
+      color: #1a1a1a;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(245, 203, 92, 0.3);
+    }
+
+    .btn-outline-jet {
+      background: transparent;
+      border: 2px solid var(--jet);
+      color: var(--jet);
+      font-weight: 600;
+      padding: 0.7rem 2rem;
+      border-radius: 40px;
+      transition: 0.25s;
+    }
+    .btn-outline-jet:hover {
+      background: var(--jet);
+      color: var(--cream);
+      border-color: var(--jet);
+    }
+
+    /* card – rich, elevated */
+    .card-luxury {
+      background: white;
+      border: none;
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 25px 45px -18px rgba(36, 36, 35, 0.25);
+      transition: 0.3s;
+      height: 100%;
+      border-bottom: 4px solid var(--gold);
+    }
+    .card-luxury:hover {
+      transform: scale(1.02);
+      box-shadow: 0 35px 55px -20px var(--gold);
+    }
+
+    .stat-number {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--jet);
+      line-height: 1;
+    }
+    .stat-label {
+      color: var(--charcoal);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* images – refined border */
+    .img-refined {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 3px solid var(--gold);
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+    }
+
+    .img-circle-gold {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--gold);
+      box-shadow: 0 10px 20px rgba(245,203,92,0.3);
+    }
+
+    /* divider */
+    .divider-gold {
+      height: 4px;
+      width: 100px;
+      background: var(--gold);
+      margin: 1.8rem 0;
+    }
+    .divider-center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* form – rich inputs */
+    .form-control, .form-select {
+      background-color: white;
+      border: 1.5px solid var(--platinum);
+      color: var(--jet);
+      border-radius: 60px;
+      padding: 0.8rem 1.5rem;
+      font-weight: 500;
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(245, 203, 92, 0.2);
+      outline: none;
+    }
+    .form-label {
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-left: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* map with rich overlay */
+    .map-rich {
+      background: linear-gradient(145deg, #d0d9cf, #e0e6d9), url('https://images.pexels.com/photos/3735704/pexels-photo-3735704.jpeg?auto=compress&cs=tinysrgb&w=600');
+      background-size: cover;
+      background-blend-mode: overlay;
+      height: 260px;
+      border-radius: 40px;
+      border: 4px solid var(--gold);
+      position: relative;
+    }
+    .map-pin-luxury {
+      background: var(--jet);
+      color: var(--gold);
+      font-weight: 700;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(4px);
+    }
+
+    /* pricing table */
+    .pricing-rich {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 30px 40px -20px rgba(36,36,35,0.3);
+      border: 2px solid var(--gold);
+    }
+    .pricing-rich th {
+      background: var(--jet);
+      color: var(--gold);
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding: 1.3rem 1rem;
+    }
+    .pricing-rich td {
+      padding: 1.2rem 1rem;
+      background: white;
+      color: var(--jet);
+      border-bottom: 1px solid var(--platinum);
+      font-weight: 500;
+    }
+
+    /* coach grid */
+    .coach-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+    .coach-item {
+      text-align: center;
+    }
+    .coach-item img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      object-fit: cover;
+    }
+
+    footer {
+      background-color: var(--jet);
+      color: var(--cream);
+      border-top: 6px solid var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR (rich client) ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">ROYAL<span>COMBO</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarRich">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarRich">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+        <li class="nav-item"><a class="nav-link" href="#trainers">Trainers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Membership</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+      <div>
+        <a href="#contact" class="btn btn-gold"><i class="bi bi-gem"></i> free trial</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO (home) rich palette ===== -->
+<section id="home" class="container my-5 pt-5">
+  <div class="row align-items-center g-5">
+    <div class="col-lg-6">
+      <span class="badge bg-gold text-jet px-4 py-2 mb-4 fs-6 rounded-pill">✦ atelier of strength ✦</span>
+      <h1 class="display-4 fw-bold mb-4" style="color: var(--jet);">WHERE <span class="text-gold">RICHNESS</span> MEETS RAW POWER</h1>
+      <p class="lead" style="color: var(--charcoal);">Royal Combo – a sanctuary designed for those who demand excellence. From foundation to elite, experience exercise in an atmosphere of understated luxury.</p>
+      <div class="d-flex gap-4 my-5">
+        <div><span class="stat-number">950+</span> <span class="stat-label">members</span></div>
+        <div><span class="stat-number">24/7</span> <span class="stat-label">concierge</span></div>
+        <div><span class="stat-number">15</span> <span class="stat-label">master coaches</span></div>
+      </div>
+      <div class="d-flex gap-3">
+        <a href="#contact" class="btn btn-gold btn-lg px-5"><i class="bi bi-calendar-check"></i> claim royal pass</a>
+        <a href="#programs" class="btn btn-outline-jet btn-lg px-5">discover</a>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <img src="https://images.pexels.com/photos/6194358/pexels-photo-6194358.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-refined" alt="luxury gym interior" style="height: 480px;">
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAMS (rich combo) ===== -->
+<section id="programs" class="container my-5 py-5 bg-platinum rounded-5 px-4" style="background: var(--platinum);">
+  <div class="text-center mb-5">
+    <h2 class="display-5 fw-bold" style="color: var(--jet);">SIGNATURE <span class="text-gold">PROGRAMS</span></h2>
+    <div class="divider-gold divider-center"></div>
+    <p style="color: var(--charcoal);">tailored pathways – each designed with royal attention</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card-luxury">
+        <img src="https://images.pexels.com/photos/3823058/pexels-photo-3823058.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-refined mb-4" alt="basic">
+        <h3 class="text-gold">FOUNDATION</h3>
+        <p class="text-jet opacity-75">Perfect entry: technique, mobility, strength essentials.</p>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>small groups (max 6)</li>
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>coach supervision</li>
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>access to royal zone</li>
+        </ul>
+        <p class="h4 mt-4"><span class="text-gold">$45</span> <span class="small" style="color: var(--charcoal);">/month</span></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-luxury">
+        <img src="https://images.pexels.com/photos/6550855/pexels-photo-6550855.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-refined mb-4" alt="mid">
+        <h3 class="text-gold">COMBO MID</h3>
+        <p class="text-jet opacity-75">Hypertrophy & periodized strength, 4-5 days/week.</p>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>olympic lifting intro</li>
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>nutrition workshop</li>
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>2 guest passes</li>
+        </ul>
+        <p class="h4 mt-4"><span class="text-gold">$69</span> <span class="small" style="color: var(--charcoal);">/month</span></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-luxury">
+        <img src="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-refined mb-4" alt="elite">
+        <h3 class="text-gold">ELITE COMBO</h3>
+        <p class="text-jet opacity-75">1on1 coaching, recovery, full bioanalysis.</p>
+        <ul class="list-unstyled">
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>cryo/massage included</li>
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>weekly body scan</li>
+          <li><i class="bi bi-check-circle-fill text-gold me-2"></i>private locker</li>
+        </ul>
+        <p class="h4 mt-4"><span class="text-gold">$159</span> <span class="small" style="color: var(--charcoal);">/month</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCHEDULE + LUXURY NOTE ===== -->
+<section id="schedule" class="container my-5 py-4" style="background: var(--cream); border-radius: 50px;">
+  <div class="row align-items-center">
+    <div class="col-lg-7">
+      <h2 class="display-5 fw-bold" style="color: var(--jet);">WEEKLY <span class="text-gold">RHYTHM</span></h2>
+      <div class="divider-gold"></div>
+      <div class="table-responsive">
+        <table class="table table-borderless" style="color: var(--jet);">
+          <thead style="color: var(--gold);"><tr><th>Day</th><th>Basic</th><th>Mid</th><th>Elite</th></tr></thead>
+          <tbody>
+            <tr><td>Mon</td><td>7am, 5pm</td><td>8am, 6pm</td><td>7am (1on1)</td></tr>
+            <tr><td>Wed</td><td>7am, 5pm</td><td>8am, 6pm</td><td>9am (group)</td></tr>
+            <tr><td>Fri</td><td>7am, 4pm</td><td>9am, 5pm</td><td>8am (technique)</td></tr>
+            <tr><td>Sat</td><td>9am</td><td>10am</td><td>11am (open)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="bg-jet p-4 rounded-5 text-cream border border-gold">
+        <div class="d-flex gap-3">
+          <i class="bi bi-gem fs-1 text-gold"></i>
+          <div><h5 class="text-gold">EXERCISE ROYALE</h5><p>Every saturday 10am – royal deadlift clinic with champion coach Marcus. limited to 6 spots.</p>
+          <button class="btn btn-gold btn-sm">reserve</button></div>
+        </div>
+        <hr class="text-gold">
+        <img src="https://images.pexels.com/photos/4162498/pexels-photo-4162498.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid rounded-4 border border-gold mt-2" style="height:130px; width:100%; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRAINERS (rich faces) ===== -->
+<section id="trainers" class="container my-5 py-4">
+  <h2 class="display-5 fw-bold text-center" style="color: var(--jet);">THE <span class="text-gold">MASTERS</span></h2>
+  <div class="divider-gold divider-center"></div>
+  <p class="text-center" style="color: var(--charcoal);">fifteen world-class coaches, each specialist in their realm</p>
+  <div class="coach-grid mt-5">
+    <div class="coach-item"><img src="https://images.pexels.com/photos/3785416/pexels-photo-3785416.jpeg?auto=compress&cs=tinysrgb&w=600" alt="coach"><p class="mt-3 fw-bold text-gold">Alexander</p></div>
+    <div class="coach-item"><img src="https://images.pexels.com/photos/3785420/pexels-photo-3785420.jpeg?auto=compress&cs=tinysrgb&w=600" alt="coach"><p class="mt-3 fw-bold text-gold">Sofia</p></div>
+    <div class="coach-item"><img src="https://images.pexels.com/photos/3785154/pexels-photo-3785154.jpeg?auto=compress&cs=tinysrgb&w=600" alt="coach"><p class="mt-3 fw-bold text-gold">Marcus</p></div>
+    <div class="coach-item"><img src="https://images.pexels.com/photos/3785917/pexels-photo-3785917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="coach"><p class="mt-3 fw-bold text-gold">Elena</p></div>
+    <div class="coach-item"><img src="https://images.pexels.com/photos/3785432/pexels-photo-3785432.jpeg?auto=compress&cs=tinysrgb&w=600" alt="coach"><p class="mt-3 fw-bold text-gold">Julian</p></div>
+  </div>
+</section>
+
+<!-- ===== PRICING (membership) ===== -->
+<section id="pricing" class="container my-5">
+  <div class="row g-5 align-items-center">
+    <div class="col-lg-5">
+      <h2 class="display-5 fw-bold" style="color: var(--jet);">INVEST IN <span class="text-gold">LEGACY</span></h2>
+      <div class="divider-gold"></div>
+      <p class="text-jet opacity-75">Simple, transparent. all members enjoy premium amenities: eucalyptus towels, aroma therapy, valet parking.</p>
+      <div class="d-flex align-items-center gap-3 bg-platinum p-3 rounded-5">
+        <img src="https://images.pexels.com/photos/3785157/pexels-photo-3785157.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-circle-gold" style="width: 70px; height: 70px;">
+        <div><span class="fw-bold text-gold">free consultation</span> <span class="d-block text-jet">with every plan</span></div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="pricing-rich">
+        <table class="table mb-0">
+          <thead><tr><th>plan</th><th>monthly</th><th>commitment</th><th>perks</th></tr></thead>
+          <tbody>
+            <tr><td class="fw-bold">FOUNDATION</td><td class="text-gold h5">$45</td><td>no contract</td><td>1 guest pass</td></tr>
+            <tr><td class="fw-bold">COMBO MID</td><td class="text-gold h5">$69</td><td>3 months</td><td>2 passes + nutrition</td></tr>
+            <tr><td class="fw-bold">ELITE COMBO</td><td class="text-gold h5">$159</td><td>6 months</td><td>unlimited guests + recovery</td></tr>
+            <tr><td class="fw-bold">CORPORATE DUAL</td><td class="text-gold h5">$120</td><td>12 months</td><td>for two, all access</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT + MAP (rich palette) ===== -->
+<section id="contact" class="container my-5 py-5 bg-charcoal rounded-5 px-4" style="background: var(--charcoal);">
+  <div class="row g-5">
+    <div class="col-lg-6">
+      <h2 class="display-6 fw-bold text-cream">BOOK YOUR <span class="text-gold">ROYAL TRIAL</span></h2>
+      <p class="text-cream opacity-75">one week full access – experience the combo.</p>
+      <form class="row g-4">
+        <div class="col-md-6"><label class="form-label text-cream">Full name</label><input type="text" class="form-control" placeholder="Your name"></div>
+        <div class="col-md-6"><label class="form-label text-cream">Email</label><input type="email" class="form-control" placeholder="royal@domain.com"></div>
+        <div class="col-12"><label class="form-label text-cream">Phone</label><input type="tel" class="form-control" value="+1 (212) 555-9900"></div>
+        <div class="col-6"><label class="form-label text-cream">Program</label><select class="form-select"><option>Foundation</option><option>Combo Mid</option><option>Elite</option></select></div>
+        <div class="col-6"><label class="form-label text-cream">Date</label><input type="date" class="form-control" value="2025-06-15"></div>
+        <div class="col-12"><button type="submit" class="btn btn-gold w-100 py-3 fs-5">✧ secure royal trial ✧</button></div>
+      </form>
+      <div class="mt-5 d-flex gap-5">
+        <div><i class="bi bi-telephone fs-4 text-gold"></i> +1 (800) 555-8765</div>
+        <div><i class="bi bi-envelope fs-4 text-gold"></i> concierge@royalcombo.com</div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="map-rich">
+        <div class="map-pin-luxury"><i class="bi bi-geo-alt-fill"></i> 41 East 57th, Manhattan</div>
+      </div>
+      <div class="row mt-4 g-3">
+        <div class="col-4 text-center"><span class="stat-number text-cream">0.1</span> <span class="text-gold">mi</span> <span class="d-block text-cream">from 5th ave</span></div>
+        <div class="col-4 text-center"><span class="stat-number text-cream">5.0</span> <span class="text-gold">★</span> <span class="d-block text-cream">forbes rating</span></div>
+        <div class="col-4 text-center"><span class="stat-number text-cream">24</span> <span class="text-gold">/7</span> <span class="d-block text-cream">butler service</span></div>
+      </div>
+      <div class="bg-jet p-3 rounded-4 border border-gold mt-4">
+        <i class="bi bi-truck text-gold"></i> <span class="text-cream">second atelier opening in Greenwich, CT – 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RICH BANNER ===== -->
+<section class="container my-5">
+  <div class="bg-gold p-5 rounded-5 text-jet d-flex flex-wrap justify-content-between align-items-center">
+    <div><h3 class="fw-bold">READY TO TRAIN LIKE ROYALTY?</h3><p class="mb-0">first week free + royal combo towel & shaker</p></div>
+    <a href="#contact" class="btn btn-jet btn-lg px-5" style="background: var(--jet); color: var(--gold);">join now</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"><span class="h3 text-gold">ROYAL COMBO</span><p class="small text-cream opacity-75 mt-2">© 2025 · all rights reserved · atelier of strength</p></div>
+      <div class="col-md-2"><h6 class="text-gold">programs</h6><ul class="list-unstyled small text-cream"><li>foundation</li><li>mid combo</li><li>elite</li></ul></div>
+      <div class="col-md-2"><h6 class="text-gold">legal</h6><ul class="list-unstyled small text-cream"><li>privacy</li><li>terms</li></ul></div>
+      <div class="col-md-4"><h6 class="text-gold">royal newsletter</h6><div class="input-group"><input class="form-control" placeholder="email"><button class="btn btn-gold">→</button></div></div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```
